@@ -1,5 +1,9 @@
 const swipe = document.querySelector('#highlight')
 const list = document.querySelector('#list')
+const sidebar = document.querySelector('#sidebar')
+const pc = document.querySelector('#pc')
+pc.innerHTML = `<div class="section-title"><h5>PC Games</h5></div>`
+sidebar.innerHTML = ''
 list.innerHTML = ''
 swipe.innerHTML = ''
 
@@ -19,7 +23,7 @@ fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=alph
             console.log(data[i])
             let thumbnail = new URL((data[i].thumbnail))
             console.log(thumbnail.toString())
-            view += `<div class="col-lg-4 col-md-6 col-sm-6">
+            view += `<div class="col-lg-6 col-md-6 col-sm-6">
             <div class="product__item">
                 <div class="product__item__pic set-bg" style="background-image: url(${thumbnail.toString()});" >
                     <div class="ep">${data[i].genre}</div>
@@ -36,7 +40,7 @@ fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=alph
             </div>
         </div>
         `
-            if(i == 9){
+            if(i == 7){
                 break
             }
         }
@@ -75,6 +79,58 @@ fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=alph
             }
         }
         swipe.innerHTML += view
+        return
+    })
+    .catch(err => console.error(err));
+
+    fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=date_release', options)
+    .then(response => response.json())
+    .then(data => {
+        let view = ""
+        for(let i in data){
+            console.log(data[i])
+            let thumbnail = new URL((data[i].thumbnail))
+            console.log(thumbnail.toString())
+            view += `<div class="product__sidebar__view__item set-bg" style="background-image: url(${thumbnail.toString()});">
+                <div class="ep">${data[i].genre}</div>
+                <div class="view"><i class="fa fa-gamepad"></i> ${data[i].developer}</div>
+                <h5><a href="#">${data[i].title}</a></h5>
+            </div>
+            `
+            if(i == 4){
+                break
+            }
+        }
+        sidebar.innerHTML += view
+        return
+    })
+    .catch(err => console.error(err));
+
+    fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?platform=pc', options)
+    .then(response => response.json())
+    .then(data => {
+        let view = ""
+        for(let i in data){
+            console.log(data[i])
+            let thumbnail = new URL((data[i].thumbnail))
+            console.log(thumbnail.toString())
+            view += `<div class="product__sidebar__comment__item">
+                <div class="product__sidebar__comment__item__text">
+                    <img src=${thumbnail.toString()} alt="" width="300" style="margin-bottom : 10px">
+                    <h5><a href="#">${data[i].title}</a></h5>
+                    <ul>
+                        <li>${data[i].platform}</li>
+                        <li>${data[i].genre}</li>
+                        <li>${data[i].publisher}</li>
+                    </ul>
+                </div>
+            </div>
+            `
+            if(i == 2){
+                break
+            }
+        }
+        pc.innerHTML += view
         return
     })
     .catch(err => console.error(err));
