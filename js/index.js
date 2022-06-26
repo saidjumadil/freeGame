@@ -18,6 +18,7 @@ const options = {
     }
 };
 
+//Data list
 fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=alphabetical', options)
     .then(response => response.json())
     .then(data => {
@@ -52,6 +53,7 @@ fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=alph
     })
     .catch(err => console.error(err));
 
+    //Highlight
     fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=popularity', options)
     .then(response => response.json())
     .then(data => {
@@ -86,6 +88,7 @@ fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=alph
     })
     .catch(err => console.error(err));
 
+    //terbaru
     fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=date_release', options)
     .then(response => response.json())
     .then(data => {
@@ -109,6 +112,7 @@ fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=alph
     })
     .catch(err => console.error(err));
 
+    //data game pc
     fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?platform=pc&&sort-by=popularity', options)
     .then(response => response.json())
     .then(data => {

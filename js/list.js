@@ -51,6 +51,7 @@ fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=alph
     })
     .catch(err => console.error(err));
 
+    //game terbaru
     fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=date_release', options)
     .then(response => response.json())
     .then(data => {
@@ -74,6 +75,7 @@ fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=alph
     })
     .catch(err => console.error(err));
 
+    //game pc
     fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?platform=pc&&sort-by=popularity', options)
     .then(response => response.json())
     .then(data => {

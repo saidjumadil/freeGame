@@ -30,6 +30,7 @@ const options = {
     }
 };
 
+//detail game
 fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${id}`, options)
     .then(response => response.json())
     .then(data => {
@@ -60,6 +61,7 @@ fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${id}`, op
 
 
     function relate(genre) {
+        //relate game
         fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=popularity&&category=${genre}`, options)
             .then(response => response.json())
             .then(data => {
