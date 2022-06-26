@@ -10,7 +10,7 @@ const genre = document.querySelectorAll('#genre')
 const platform = document.querySelector('#platform')
 const developer = document.querySelector('#developer')
 const release_date = document.querySelector('#release_date')
-
+const thumbnail = document.querySelector('#thumbnail')
 let genreGame = ''
 
 const os = document.querySelector('#os')
@@ -33,29 +33,31 @@ const options = {
 fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${id}`, options)
     .then(response => response.json())
     .then(data => {
-        console.log(data.minimum_system_requirements.os)
+        console.log(data)
         title.innerHTML = data.title
         publisher.innerHTML = data.publisher
         short_description.innerHTML = data.description
         genreGame = data.genre
-        relate(genreGame)
         genre[0].innerHTML = data.genre
         genre[1].innerHTML = `<span>Genre:</span> ${data.genre}`
         platform.innerHTML = `<span>Platform:</span> ${data.platform}`
         developer.innerHTML = `<span>Developer:</span> ${data.developer}`
         release_date.innerHTML = `<span>Release Date:</span> ${data.release_date}`
-        
-        os.innerHTML = `<span>OS</span> ${data.minimum_system_requirements.os}`
-        processor.innerHTML = `<span>Processor</span> ${data.minimum_system_requirements.processor}`
-        graphics.innerHTML = `<span>Graphic Card</span> ${data.minimum_system_requirements.graphics}`
-        memory.innerHTML = `<span>Memory</span> ${data.minimum_system_requirements.memory}`
-        storage.innerHTML = `<span>Storage</span> ${data.minimum_system_requirements.storage}`
+        thumbnail.innerHTML = `<div class="anime__details__pic set-bg mb-4 ms-4" style="background-image: url(${data.thumbnail});background-repeat: no-repeat;background-size: 700px;">
+        </div>`
+        if(data.minimum_system_requirements){
+            os.innerHTML = `<span>OS</span> ${data.minimum_system_requirements.os}`
+            processor.innerHTML = `<span>Processor</span> ${data.minimum_system_requirements.processor}`
+            graphics.innerHTML = `<span>Graphic Card</span> ${data.minimum_system_requirements.graphics}`
+            memory.innerHTML = `<span>Memory</span> ${data.minimum_system_requirements.memory}`
+            storage.innerHTML = `<span>Storage</span> ${data.minimum_system_requirements.storage}`
+        }
+        relate(genreGame.replace(/ /g,""))
         
         return
     })
     .catch(err => console.error(err));
-    
-    console.log(genreGame)
+
 
     function relate(genre) {
         fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=popularity&&category=${genre}`, options)
