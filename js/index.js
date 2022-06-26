@@ -38,7 +38,7 @@ fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=alph
                         <li>${data[i].platform}</li>
                         <li>${data[i].publisher}</li>
                     </ul>
-                    <h5><a href="#">${data[i].title}</a></h5>
+                    <h5><a href="/game-details.html?id=${data[i].id}">${data[i].title}</a></h5>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@ fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=alph
                         <li>${data[i].platform}</li>
                         <li>${data[i].publisher}</li>
                     </ul>
-                    <h5><a href="#">${data[i].title}</a></h5>
+                    <h5><a href="/game-details.html?id=${data[i].id}">${data[i].title}</a></h5>
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@ fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=alph
             view += `<div class="product__sidebar__view__item set-bg" style="background-image: url(${thumbnail.toString()});">
                 <div class="ep">${data[i].genre}</div>
                 <div class="view"><i class="fa fa-gamepad"></i> ${data[i].developer}</div>
-                <h5><a href="#">${data[i].title}</a></h5>
+                <h5><a href="/game-details.html?id=${data[i].id}">${data[i].title}</a></h5>
             </div>
             `
             if(i == 4){
@@ -120,7 +120,7 @@ fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=alph
             view += `<div class="product__sidebar__comment__item">
                 <div class="product__sidebar__comment__item__text">
                     <img src=${thumbnail.toString()} alt="" width="300" style="margin-bottom : 10px">
-                    <h5><a href="#">${data[i].title}</a></h5>
+                    <h5><a href="/game-details.html?id=${data[i].id}">${data[i].title}</a></h5>
                     <ul>
                         <li>${data[i].platform}</li>
                         <li>${data[i].genre}</li>
@@ -150,7 +150,7 @@ fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=alph
             view += `<div class="product__sidebar__comment__item">
                 <div class="product__sidebar__comment__item__text">
                     <img src=${thumbnail.toString()} alt="" width="300" style="margin-bottom : 10px">
-                    <h5><a href="#">${data[i].title}</a></h5>
+                    <h5><a href="/game-details.html?id=${data[i].id}">${data[i].title}</a></h5>
                     <ul>
                         <li>${data[i].platform}</li>
                         <li>${data[i].genre}</li>
